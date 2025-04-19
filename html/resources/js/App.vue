@@ -12,18 +12,18 @@
           </div>
           
           <div class="hidden md:flex items-center space-x-8">
-            <a href="/" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Home</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Properties</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">About</a>
-            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Contact</a>
-            <a href="#" class="btn-primary">
+            <router-link to="/" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Home</router-link>
+            <router-link to="/properties" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Properties</router-link>
+            <router-link to="/about" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">About</router-link>
+            <router-link to="/contact" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Contact</router-link>
+            <router-link to="/properties" class="btn-primary">
               <span class="flex items-center">
                 <span>View Listings</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </span>
-            </a>
+            </router-link>
           </div>
           
           <!-- Mobile menu button -->
@@ -70,19 +70,19 @@
             <div>
               <h3 class="text-accent font-semibold mb-4 text-lg">Explore</h3>
               <ul class="space-y-3 text-gray-400">
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Properties</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Locations</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Investments</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> New Developments</a></li>
+                <li><router-link to="/properties" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Properties</router-link></li>
+                <li><router-link to="/locations" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Locations</router-link></li>
+                <li><router-link to="/investments" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Investments</router-link></li>
+                <li><router-link to="/new-developments" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> New Developments</router-link></li>
               </ul>
             </div>
             <div>
               <h3 class="text-accent font-semibold mb-4 text-lg">Company</h3>
               <ul class="space-y-3 text-gray-400">
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> About Us</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Our Team</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Careers</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Testimonials</a></li>
+                <li><router-link to="/about" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> About Us</router-link></li>
+                <li><router-link to="/team" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Our Team</router-link></li>
+                <li><router-link to="/careers" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Careers</router-link></li>
+                <li><router-link to="/testimonials" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Testimonials</router-link></li>
               </ul>
             </div>
             <div>
@@ -111,9 +111,9 @@
             &copy; {{ new Date().getFullYear() }} Luxury Properties. All rights reserved.
           </p>
           <div class="flex space-x-6 text-sm text-gray-500">
-            <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
-            <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
-            <a href="#" class="hover:text-white transition duration-300">Cookie Policy</a>
+            <router-link to="/privacy" class="hover:text-white transition duration-300">Privacy Policy</router-link>
+            <router-link to="/terms" class="hover:text-white transition duration-300">Terms of Service</router-link>
+            <router-link to="/cookies" class="hover:text-white transition duration-300">Cookie Policy</router-link>
           </div>
         </div>
       </div>
