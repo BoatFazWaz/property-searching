@@ -1,6 +1,10 @@
-# FazWaz Property Search Application
+# Property Search Application
 
 A full-stack application for property searching, built with Laravel and Vue.js.
+
+## Screenshot
+
+![Property Search](image.png)
 
 ## Features
 
@@ -52,7 +56,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=fazwaz
+DB_DATABASE=property_search
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
 ```
