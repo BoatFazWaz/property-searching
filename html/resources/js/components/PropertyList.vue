@@ -2,7 +2,7 @@
   <div>
     <!-- Hero Section -->
     <div class="relative bg-gray-900 text-white mb-16">
-      <img src="https://placehold.co/1600x500/purple-900/gray-800" alt="Luxury Properties" class="w-full h-64 md:h-96 object-cover mix-blend-overlay">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2053&q=80" alt="Luxury Properties" class="w-full h-64 md:h-96 object-cover mix-blend-overlay">
       <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
         <h1 class="text-3xl md:text-5xl font-serif font-light mb-4">Discover Luxury Living</h1>
         <p class="text-xl md:text-2xl font-light opacity-90 max-w-2xl">Exceptional properties in Thailand's most prestigious locations</p>
