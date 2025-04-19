@@ -1,3 +1,91 @@
+# Property Searching Application
+
+A property listing application built with Laravel and Vue.js that allows users to search, filter, and browse properties in Thailand.
+
+## Features
+
+- Display a list of properties for sale with pagination (25 properties per page)
+- Search properties by title and location
+- Filter properties by province
+- Sort properties by price (ascending/descending) and date listed (newest/oldest)
+- Dynamic routing to display properties by province
+- Responsive design for all device sizes
+
+## Tech Stack
+
+- **Backend**: Laravel 10
+- **Frontend**: Vue.js 3
+- **CSS**: Tailwind CSS
+- **Database**: MySQL
+- **Deployment**: Docker with Laravel Sail
+
+## Requirements
+
+- Docker and Docker Compose
+- PHP 8.1+
+- Composer
+- Node.js and NPM
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd property-searching
+   ```
+
+2. Start the Docker containers using Laravel Sail:
+   ```
+   cd html
+   ./vendor/bin/sail up -d
+   ```
+
+3. Install PHP dependencies:
+   ```
+   ./vendor/bin/sail composer install
+   ```
+
+4. Install JavaScript dependencies:
+   ```
+   ./vendor/bin/sail npm install
+   ```
+
+5. Run database migrations and seed the database:
+   ```
+   ./vendor/bin/sail artisan migrate --seed
+   ```
+
+6. Build frontend assets:
+   ```
+   ./vendor/bin/sail npm run dev
+   ```
+
+7. Access the application at http://localhost
+
+## Running Tests
+
+To run the PHPUnit tests:
+```
+./vendor/bin/sail artisan test
+```
+
+## API Endpoints
+
+- `GET /api/properties` - List properties with pagination, filtering, and sorting
+- `GET /api/properties/provinces` - Get list of all provinces
+- `GET /api/properties/types` - Get list of all property types
+
+### Query Parameters for /api/properties
+
+- `page` - Page number for pagination
+- `search` - Search term for title and location
+- `province` - Filter by province name
+- `sort_by` - Field to sort by (`price` or `created_at`)
+- `sort_direction` - Sort direction (`asc` or `desc`)
+- `for_sale` - Filter to show only properties for sale 
+- `for_rent` - Filter to show only properties for rent
+- `include_sold` - Include sold properties in results
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">

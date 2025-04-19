@@ -13,7 +13,7 @@ class PropertySeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get(base_path('../properties.json'));
+        $json = File::get(base_path('properties.json'));
         $properties = json_decode($json);
 
         foreach ($properties as $property) {
