@@ -1,12 +1,77 @@
+/* Import elegant font for luxury feel */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* Custom styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-800;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-gradient-to-r from-indigo-900 to-purple-900 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-900 to-purple-900;
+  }
+  
+  .luxury-card {
+    @apply relative bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl;
+  }
+}
+
+/* Luxury property card effects */
 .property-card {
-    transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .property-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.property-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Gold accent for luxury feel */
+.gold-accent {
+  color: #D4AF37;
+}
+
+.bg-gold {
+  background-color: #D4AF37;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
 }

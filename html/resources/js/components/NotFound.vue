@@ -1,13 +1,17 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center">
-    <div class="text-center">
-      <h1 class="text-6xl font-bold text-gray-800 mb-4">404</h1>
-      <p class="text-xl text-gray-600 mb-8">Page not found</p>
+  <div class="min-h-[70vh] flex items-center justify-center bg-gray-50 p-4">
+    <div class="text-center max-w-xl mx-auto bg-white p-10 rounded-lg shadow-xl">
+      <div class="inline-block p-4 bg-indigo-50 rounded-full mb-6">
+        <i class="fas fa-map-marker-alt text-3xl text-indigo-900"></i>
+      </div>
+      <h1 class="text-5xl font-serif font-light text-gray-800 mb-6">404</h1>
+      <p class="text-xl text-gray-600 mb-8 font-light">Location not found</p>
+      <p class="text-gray-500 mb-8">We couldn't find the province you're looking for. Please check the address or explore our available locations.</p>
       <router-link
         to="/"
-        class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+        class="inline-block bg-gradient-to-r from-indigo-900 to-purple-900 text-white px-8 py-4 rounded-lg font-medium hover:from-indigo-800 hover:to-purple-800 transition-all duration-300 shadow-md hover:shadow-lg"
       >
-        Go back home
+        Return to Homepage
       </router-link>
     </div>
   </div>
