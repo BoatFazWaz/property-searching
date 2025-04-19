@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PropertyList from './components/PropertyList.vue'
+import TestComponent from './components/TestComponent.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: PropertyList
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: TestComponent
   },
   {
     path: '/:province',

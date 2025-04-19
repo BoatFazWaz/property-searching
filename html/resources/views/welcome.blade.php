@@ -18,6 +18,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
+        <!-- Test div to verify Tailwind is working -->
+        <div class="fixed top-0 left-0 right-0 z-50 bg-primary text-white p-4 text-center">
+            <p>This is a test div with Tailwind classes. If this appears with blue background and white text, Tailwind is working!</p>
+        </div>
+
         <div id="app"></div>
     </body>
 </html>
