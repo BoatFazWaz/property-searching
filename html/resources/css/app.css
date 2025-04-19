@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Variables for theme colors - Moved to the top for global accessibility */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-rgb: 37, 99, 235;
+  --color-secondary: #7c3aed;
+  --color-secondary-rgb: 124, 58, 237;
+  --color-accent: #f59e0b;
+  --color-accent-rgb: 245, 158, 11;
+}
+
 /* Custom styles */
 @layer base {
   html {
@@ -110,14 +120,4 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
-}
-
-/* CSS Variables for theme colors */
-:root {
-  --color-primary: #2563eb;
-  --color-primary-rgb: 37, 99, 235;
-  --color-secondary: #7c3aed;
-  --color-secondary-rgb: 124, 58, 237;
-  --color-accent: #f59e0b;
-  --color-accent-rgb: 245, 158, 11;
 }
