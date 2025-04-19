@@ -1,5 +1,5 @@
 /* Import elegant font for luxury feel */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,6 +13,11 @@
   
   body {
     @apply font-sans text-gray-800;
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(var(--color-primary-rgb), 0.03) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(var(--color-secondary-rgb), 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -22,30 +27,51 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-block bg-gradient-to-r from-indigo-900 to-purple-900 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
+    @apply inline-block bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 backdrop-blur-sm;
+  }
+  
+  .btn-outline {
+    @apply inline-block border border-primary/30 text-primary px-6 py-3 rounded-xl font-medium shadow-md hover:bg-primary/5 transition-all duration-300;
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-900 to-purple-900;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
   
-  .luxury-card {
-    @apply relative bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl;
+  .card-glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl;
+  }
+  
+  .input-modern {
+    @apply px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300;
+  }
+  
+  .select-modern {
+    @apply appearance-none px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent bg-white/80 backdrop-blur-sm transition-all duration-300;
   }
 }
 
 /* Luxury property card effects */
 .property-card {
+  @apply bg-white/90 backdrop-blur-sm border border-gray-100;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .property-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .property-card:hover img {
   transform: scale(1.05);
+}
+
+.property-badge {
+  @apply text-xs uppercase tracking-wider font-medium px-3 py-1 rounded-full;
+  background: rgba(var(--color-primary-rgb), 0.9);
+  backdrop-filter: blur(4px);
 }
 
 /* Gold accent for luxury feel */
@@ -74,4 +100,24 @@
 
 .animate-slideUp {
   animation: slideUp 0.4s ease-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* CSS Variables for theme colors */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-rgb: 37, 99, 235;
+  --color-secondary: #7c3aed;
+  --color-secondary-rgb: 124, 58, 237;
+  --color-accent: #f59e0b;
+  --color-accent-rgb: 245, 158, 11;
 }

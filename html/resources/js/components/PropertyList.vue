@@ -1,16 +1,48 @@
 <template>
   <div>
     <!-- Hero Section -->
-    <div class="relative bg-gray-900 text-white mb-16">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2053&q=80" alt="Luxury Properties" class="w-full h-64 md:h-96 object-cover mix-blend-overlay">
-      <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-        <h1 class="text-3xl md:text-5xl font-serif font-light mb-4">Discover Luxury Living</h1>
-        <p class="text-xl md:text-2xl font-light opacity-90 max-w-2xl">Exceptional properties in Thailand's most prestigious locations</p>
+    <div class="relative overflow-hidden mb-24">
+      <!-- Background -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2053&q=80" 
+          alt="Luxury Properties" 
+          class="w-full h-full object-cover brightness-75"
+        >
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30"></div>
+      </div>
+
+      <!-- Content -->
+      <div class="relative z-10 pt-32 pb-40 px-4 max-w-6xl mx-auto">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 text-white leading-tight animate-fadeIn">
+            Discover Exceptional <span class="text-accent">Luxury Living</span>
+          </h1>
+          <p class="text-xl md:text-2xl font-light text-white/90 max-w-2xl mb-10 animate-slideUp">
+            Explore Thailand's finest properties in the most prestigious locations
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#properties" class="btn-primary">
+              Browse Properties
+            </a>
+            <a href="#" class="btn-outline text-white border-white/30 hover:bg-white/10">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave divider -->
+      <div class="absolute bottom-0 left-0 right-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" class="w-full h-auto fill-current text-blue-50">
+          <path d="M0,32L80,42.7C160,53,320,75,480,74.7C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
+        </svg>
       </div>
     </div>
 
     <!-- Search and Filter Section -->
-    <div class="mb-12 bg-white rounded-lg shadow-xl p-8 max-w-6xl mx-auto -mt-24 relative z-10">
+    <div class="mb-16 card-glass p-8 max-w-6xl mx-auto -mt-40 relative z-10">
       <div class="flex flex-col lg:flex-row gap-6">
         <!-- Search Input -->
         <div class="flex-1">
@@ -24,7 +56,7 @@
               v-model="searchQuery"
               @input="handleSearch"
               placeholder="Search by title or location..."
-              class="w-full pl-10 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="input-modern w-full pl-10"
             >
           </div>
         </div>
@@ -36,7 +68,7 @@
             <select
               v-model="selectedProvince"
               @change="handleProvinceChange"
-              class="appearance-none w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="select-modern w-full"
             >
               <option value="">All Locations</option>
               <option v-for="province in provinces" :key="province" :value="province">
@@ -56,7 +88,7 @@
             <select
               v-model="sortBy"
               @change="handleSort"
-              class="appearance-none w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="select-modern w-full"
             >
               <option value="created_at-desc">Newest First</option>
               <option value="created_at-asc">Oldest First</option>
@@ -71,51 +103,59 @@
       </div>
     </div>
 
+    <div id="properties" class="-mt-6"></div>
+
+    <!-- Properties Section Title -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif mb-4">Featured Properties</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Explore our handpicked selection of Thailand's most exceptional properties</p>
+    </div>
+
     <!-- Loading State -->
-    <div v-if="loading" class="flex justify-center items-center py-20">
-      <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-900"></div>
+    <div v-if="loading" class="flex justify-center items-center py-32">
+      <div class="relative w-24 h-24">
+        <div class="absolute top-0 left-0 w-full h-full rounded-full border-4 border-gray-200"></div>
+        <div class="absolute top-0 left-0 w-full h-full rounded-full border-4 border-t-primary animate-spin"></div>
+      </div>
     </div>
 
     <!-- No Results -->
-    <div v-else-if="properties.length === 0" class="text-center py-20">
-      <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
-      <h3 class="text-xl text-gray-600 font-light">No properties found</h3>
-      <p class="mt-2 text-gray-500">Try adjusting your search criteria</p>
+    <div v-else-if="properties.length === 0" class="text-center py-32 px-4">
+      <div class="inline-block p-6 rounded-full bg-gray-100 text-gray-500 mb-6">
+        <i class="fas fa-search text-4xl"></i>
+      </div>
+      <h3 class="text-2xl font-serif font-light mb-3">No properties found</h3>
+      <p class="text-gray-500 max-w-md mx-auto mb-8">We couldn't find any properties that match your search criteria. Try adjusting your filters or search terms.</p>
+      <button @click="resetFilters" class="btn-primary">
+        Reset Filters
+      </button>
     </div>
 
     <!-- Properties Grid -->
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <div v-for="property in properties" :key="property.id" class="relative group bg-white rounded-lg shadow-lg overflow-hidden property-card hover:shadow-2xl transition-all duration-300">
-        <div class="absolute top-4 right-4 z-10">
-          <span v-if="property.for_sale" class="bg-indigo-900 text-white text-xs uppercase tracking-wider font-medium px-3 py-1 rounded-full">For Sale</span>
-          <span v-else class="bg-purple-700 text-white text-xs uppercase tracking-wider font-medium px-3 py-1 rounded-full">For Rent</span>
-        </div>
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <div v-for="property in properties" :key="property.id" class="property-card group rounded-2xl overflow-hidden animate-float">
         <div class="relative">
-          <img 
-            :src="property.photo_search || `https://source.unsplash.com/random/300x200/?luxury,${property.property_type.toLowerCase()},real,estate`" 
-            :alt="property.title" 
-            class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
-          >
-          <div class="absolute inset-0 bg-black opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-        </div>
-        <div class="p-6">
-          <div class="flex justify-between">
-            <h3 class="text-xl font-semibold text-gray-800 mb-2 line-clamp-1">{{ property.title }}</h3>
+          <!-- Property Badge -->
+          <div class="absolute top-4 right-4 z-10">
+            <span v-if="property.for_sale" class="property-badge">For Sale</span>
+            <span v-else class="property-badge bg-secondary/90">For Rent</span>
+          </div>
+
+          <!-- Property Image -->
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              :src="property.photo_search || `https://source.unsplash.com/random/300x200/?luxury,${property.property_type.toLowerCase()},real,estate`" 
+              :alt="property.title" 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
           </div>
           
-          <p class="text-indigo-600 mb-2 text-sm">
-            <i class="fas fa-map-marker-alt mr-1"></i>
-            <router-link :to="'/' + property.province" class="hover:text-indigo-800 transition duration-300">
-              {{ property.province }}
-            </router-link>
-          </p>
-          
-          <p class="text-gray-500 text-sm mb-4 line-clamp-2">{{ property.description }}</p>
-          
-          <div class="border-t border-gray-100 pt-4 mt-4">
+          <!-- Quick Info Overlay -->
+          <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
             <div class="flex justify-between items-center">
-              <span class="text-2xl font-bold text-indigo-900">{{ property.currency_symbol }}{{ formatPrice(property.price) }}</span>
-              <div class="flex space-x-4 text-gray-500">
+              <span class="text-2xl font-bold">{{ property.currency_symbol }}{{ formatPrice(property.price) }}</span>
+              <div class="flex space-x-3 text-white/90">
                 <span class="flex items-center">
                   <i class="fas fa-bed mr-1"></i> {{ property.bedrooms }}
                 </span>
@@ -123,22 +163,43 @@
                   <i class="fas fa-bath mr-1"></i> {{ property.bathrooms }}
                 </span>
                 <span class="flex items-center">
-                  <i class="fas fa-ruler-combined mr-1"></i> {{ property.area }} {{ property.area_type }}
+                  <i class="fas fa-ruler-combined mr-1"></i> {{ property.area }}
                 </span>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Property Details -->
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2 line-clamp-1 group-hover:text-primary transition-colors duration-300">
+            {{ property.title }}
+          </h3>
+          
+          <p class="text-primary/80 mb-3 text-sm flex items-center">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <router-link :to="'/' + property.province" class="hover:text-primary transition duration-300">
+              {{ property.province }}
+            </router-link>
+          </p>
+          
+          <p class="text-gray-500 text-sm mb-4 line-clamp-2">{{ property.description }}</p>
+          
+          <!-- View details button -->
+          <button class="w-full py-3 mt-2 text-center border border-primary/30 rounded-xl text-primary font-medium hover:bg-primary hover:text-white transition-all duration-300">
+            View Details
+          </button>
+        </div>
       </div>
     </div>
 
     <!-- Pagination -->
-    <div v-if="properties.length > 0" class="mt-12 mb-16 flex justify-center">
+    <div v-if="properties.length > 0" class="mt-16 mb-24 flex justify-center">
       <nav class="flex flex-wrap gap-2">
         <button
           v-if="currentPage > 1"
           @click="handlePageChange(currentPage - 1)"
-          class="px-4 py-2 rounded-md bg-white border border-gray-300 text-indigo-600 hover:bg-indigo-50 transition-colors duration-300"
+          class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-300 shadow-sm"
         >
           <i class="fas fa-chevron-left mr-1"></i> Previous
         </button>
@@ -148,10 +209,10 @@
           :key="page"
           @click="handlePageChange(page)"
           :class="[
-            'px-4 py-2 rounded-md border transition-colors duration-300',
+            'px-5 py-2.5 rounded-xl border transition-colors duration-300 shadow-sm',
             currentPage === page
-              ? 'bg-indigo-900 text-white border-indigo-900'
-              : 'bg-white text-indigo-600 border-gray-300 hover:bg-indigo-50'
+              ? 'bg-primary text-white border-primary'
+              : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
           ]"
         >
           {{ page }}
@@ -160,7 +221,7 @@
         <button
           v-if="currentPage < totalPages"
           @click="handlePageChange(currentPage + 1)"
-          class="px-4 py-2 rounded-md bg-white border border-gray-300 text-indigo-600 hover:bg-indigo-50 transition-colors duration-300"
+          class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors duration-300 shadow-sm"
         >
           Next <i class="fas fa-chevron-right ml-1"></i>
         </button>
@@ -284,6 +345,17 @@ export default {
       return price.toLocaleString();
     };
 
+    const resetFilters = () => {
+      searchQuery.value = '';
+      selectedProvince.value = '';
+      sortBy.value = 'created_at-desc';
+      currentPage.value = 1;
+      fetchProperties();
+      if (route.params.province) {
+        router.push('/');
+      }
+    };
+
     watch(() => route.params.province, (newProvince) => {
       selectedProvince.value = newProvince || '';
       currentPage.value = 1;
@@ -310,6 +382,7 @@ export default {
       handlePageChange,
       handleProvinceChange,
       formatPrice,
+      resetFilters,
     };
   },
 };

@@ -1,58 +1,120 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
-    <nav class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white p-4 shadow-xl">
-      <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-serif tracking-wide">
-          <span class="text-yellow-400">LUXURY</span> PROPERTIES
-        </h1>
-        <div class="hidden md:flex space-x-6 font-light">
-          <a href="/" class="hover:text-yellow-400 transition duration-300">Home</a>
-          <a href="#" class="hover:text-yellow-400 transition duration-300">About</a>
-          <a href="#" class="hover:text-yellow-400 transition duration-300">Contact</a>
+  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50">
+    <!-- Modern Navigation Bar -->
+    <header class="sticky top-0 z-50">
+      <nav class="bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-serif tracking-wide">
+              <span class="text-gradient font-bold">LUXURY</span> 
+              <span class="text-gray-800">PROPERTIES</span>
+            </h1>
+          </div>
+          
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Home</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Properties</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">About</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition duration-300 ease-in-out font-medium">Contact</a>
+            <a href="#" class="btn-primary">
+              <span class="flex items-center">
+                <span>View Listings</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </a>
+          </div>
+          
+          <!-- Mobile menu button -->
+          <button class="md:hidden text-gray-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
     
-    <div class="py-10 px-4 container mx-auto">
+    <main class="flex-grow py-6 px-4 container mx-auto">
       <router-view></router-view>
-    </div>
+    </main>
     
-    <footer class="bg-gray-900 text-white py-10">
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16">
       <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between">
-          <div class="mb-6 md:mb-0">
-            <h2 class="text-xl font-serif mb-4">LUXURY PROPERTIES</h2>
-            <p class="text-gray-400">Discover your dream property in Thailand's most desirable locations.</p>
+        <!-- Top footer section -->
+        <div class="flex flex-col md:flex-row justify-between mb-12">
+          <div class="mb-8 md:mb-0 md:w-1/3 pr-8">
+            <h2 class="text-2xl font-serif mb-6 text-gradient">LUXURY PROPERTIES</h2>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              Discover your dream property in Thailand's most prestigious locations. Our curated collection 
+              features only the finest luxury homes, condos, and villas in the most sought-after destinations.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary/80 flex items-center justify-center transition duration-300">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary/80 flex items-center justify-center transition duration-300">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary/80 flex items-center justify-center transition duration-300">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary/80 flex items-center justify-center transition duration-300">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
           </div>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:w-2/3">
             <div>
-              <h3 class="text-yellow-400 font-semibold mb-3">Explore</h3>
-              <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-white transition duration-300">Properties</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300">Locations</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300">Investments</a></li>
+              <h3 class="text-accent font-semibold mb-4 text-lg">Explore</h3>
+              <ul class="space-y-3 text-gray-400">
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Properties</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Locations</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Investments</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> New Developments</a></li>
               </ul>
             </div>
             <div>
-              <h3 class="text-yellow-400 font-semibold mb-3">Company</h3>
-              <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-white transition duration-300">About Us</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300">Our Team</a></li>
-                <li><a href="#" class="hover:text-white transition duration-300">Careers</a></li>
+              <h3 class="text-accent font-semibold mb-4 text-lg">Company</h3>
+              <ul class="space-y-3 text-gray-400">
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> About Us</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Our Team</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Careers</a></li>
+                <li><a href="#" class="hover:text-white transition duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2 text-accent/70"></i> Testimonials</a></li>
               </ul>
             </div>
             <div>
-              <h3 class="text-yellow-400 font-semibold mb-3">Contact</h3>
-              <ul class="space-y-2 text-gray-400">
-                <li>contact@luxuryproperties.com</li>
-                <li>+66 2 123 4567</li>
-                <li>Bangkok, Thailand</li>
+              <h3 class="text-accent font-semibold mb-4 text-lg">Contact</h3>
+              <ul class="space-y-3 text-gray-400">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1.5 mr-3 text-accent/80"></i>
+                  <span>123 Sukhumvit Road<br>Bangkok, Thailand 10110</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt mr-3 text-accent/80"></i>
+                  <span>+66 2 123 4567</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope mr-3 text-accent/80"></i>
+                  <span>contact@luxuryproperties.com</span>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="border-t border-gray-800 mt-10 pt-6 text-gray-500 text-sm text-center">
-          &copy; {{ new Date().getFullYear() }} Luxury Properties. All rights reserved.
+        
+        <!-- Bottom footer section -->
+        <div class="border-t border-gray-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            &copy; {{ new Date().getFullYear() }} Luxury Properties. All rights reserved.
+          </p>
+          <div class="flex space-x-6 text-sm text-gray-500">
+            <a href="#" class="hover:text-white transition duration-300">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition duration-300">Terms of Service</a>
+            <a href="#" class="hover:text-white transition duration-300">Cookie Policy</a>
+          </div>
         </div>
       </div>
     </footer>
