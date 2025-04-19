@@ -9,6 +9,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import axios from 'axios';
+import '../css/app.css';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
