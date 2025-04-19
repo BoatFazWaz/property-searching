@@ -91,7 +91,11 @@
           <span v-else class="bg-purple-700 text-white text-xs uppercase tracking-wider font-medium px-3 py-1 rounded-full">For Rent</span>
         </div>
         <div class="relative">
-          <img :src="property.photo_search" :alt="property.title" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105">
+          <img 
+            :src="property.photo_search || `https://source.unsplash.com/random/300x200/?luxury,${property.property_type.toLowerCase()},real,estate`" 
+            :alt="property.title" 
+            class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+          >
           <div class="absolute inset-0 bg-black opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
         </div>
         <div class="p-6">
