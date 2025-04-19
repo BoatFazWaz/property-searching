@@ -1,7 +1,7 @@
 <template>
-  <div class="card-glass p-10 my-8">
+  <div class="card-glass p-10 my-8 min-h-[50vh] flex flex-col">
     <h1 class="text-4xl font-serif mb-6">Contact Us</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow">
       <div>
         <p class="mb-6">We'd love to hear from you. Please use the form or contact details below to get in touch with our team.</p>
         <div class="space-y-4 mb-6">
@@ -17,6 +17,24 @@
             <i class="fas fa-envelope text-primary mr-3"></i>
             <span>contact@luxuryproperties.com</span>
           </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-white/50 rounded-xl border border-primary/10">
+          <h3 class="font-serif text-xl mb-3 text-primary">Office Hours</h3>
+          <ul class="space-y-2">
+            <li class="flex justify-between">
+              <span>Monday - Friday</span>
+              <span class="font-medium">9:00 AM - 6:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Saturday</span>
+              <span class="font-medium">10:00 AM - 4:00 PM</span>
+            </li>
+            <li class="flex justify-between">
+              <span>Sunday</span>
+              <span class="font-medium">Closed</span>
+            </li>
+          </ul>
         </div>
       </div>
       <div>

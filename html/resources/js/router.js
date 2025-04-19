@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PropertyList from './components/PropertyList.vue'
-import TestComponent from './components/TestComponent.vue'
 import PlaceholderPage from './components/PlaceholderPage.vue'
 import AboutPage from './components/AboutPage.vue'
 import ContactPage from './components/ContactPage.vue'
@@ -10,11 +9,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: PropertyList
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: TestComponent
   },
   {
     path: '/properties',

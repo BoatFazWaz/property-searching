@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50">
+  <div class="flex flex-col min-h-screen bg-gradient-to-b from-blue-50 to-indigo-50">
     <!-- Modern Navigation Bar -->
     <header class="sticky top-0 z-50">
       <nav class="bg-white/80 backdrop-blur-md border-b border-white/20 shadow-sm py-4">
@@ -40,7 +40,7 @@
       <router-view></router-view>
     </main>
     
-    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16">
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 mt-auto">
       <div class="container mx-auto px-4">
         <!-- Top footer section -->
         <div class="flex flex-col md:flex-row justify-between mb-12">
