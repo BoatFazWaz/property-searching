@@ -35,6 +35,12 @@ class PropertyControllerTest extends TestCase
             'price' => 500000,
             'province' => 'Bangkok',
             'property_type' => 'Condo',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 80,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '123 Test Street',
         ]);
 
         $response = $this->get('/Bangkok');
