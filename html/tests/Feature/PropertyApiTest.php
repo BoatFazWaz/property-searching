@@ -28,11 +28,46 @@ class PropertyApiTest extends TestCase
      */
     private function createTestProperties()
     {
-        // Create 30 properties to test pagination (25 per page)
-        for ($i = 0; $i < 30; $i++) {
-            $forSale = $this->faker->boolean(80); // 80% chance of being for sale
-            $forRent = !$forSale ? true : $this->faker->boolean(20);
-            $sold = $this->faker->boolean(30); // 30% chance of being sold
+        // Create 25 properties that are for sale and not sold (to meet pagination requirement)
+        for ($i = 0; $i < 25; $i++) {
+            Property::create([
+                'title' => $this->faker->randomElement([
+                    '1 bedroom', '2 bedroom', '3 bedroom', '4 bedroom', '5 bedroom'
+                ]) . ' ' . $this->faker->randomElement([
+                    'Condo', 'Apartment', 'House', 'Villa', 'Townhouse'
+                ]) . ' for sale in ' . $this->faker->randomElement([
+                    'Bangkok', 'Phuket', 'Chiang Mai', 'Pattaya', 'Samut Prakan', 'Chon Buri'
+                ]),
+                'description' => $this->faker->paragraph,
+                'for_sale' => true,
+                'for_rent' => false,
+                'sold' => false,
+                'price' => $this->faker->numberBetween(100000, 1000000),
+                'currency' => 'THB',
+                'currency_symbol' => '฿',
+                'property_type' => $this->faker->randomElement([
+                    'Condo', 'Apartment', 'House', 'Villa', 'Townhouse'
+                ]),
+                'bedrooms' => $this->faker->numberBetween(1, 5),
+                'bathrooms' => $this->faker->numberBetween(1, 5),
+                'area' => $this->faker->numberBetween(30, 200),
+                'area_type' => 'sqm',
+                'country' => 'Thailand',
+                'province' => $this->faker->randomElement([
+                    'Bangkok', 'Phuket', 'Chiang Mai', 'Pattaya', 'Samut Prakan', 'Chon Buri'
+                ]),
+                'street' => $this->faker->streetAddress,
+                'photo_thumb' => 'https://placehold.co/150x100',
+                'photo_search' => 'https://placehold.co/300x150',
+                'photo_full' => 'https://placehold.co/600x300',
+            ]);
+        }
+        
+        // Create 5 additional properties with different statuses (for variety in testing)
+        for ($i = 0; $i < 5; $i++) {
+            $forSale = $i % 2 == 0;
+            $forRent = !$forSale;
+            $sold = $i == 4; // Make the last one sold
             
             Property::create([
                 'title' => $this->faker->randomElement([
