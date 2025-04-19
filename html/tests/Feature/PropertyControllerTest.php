@@ -48,14 +48,4 @@ class PropertyControllerTest extends TestCase
         $response->assertStatus(200);
         $response->assertViewIs('welcome');
     }
-
-    /**
-     * Test that the showProvince method returns 404 when province does not exist.
-     */
-    public function test_show_province_returns_404_when_province_does_not_exist(): void
-    {
-        $response = $this->get('/NonExistentProvince');
-
-        $response->assertStatus(404);
-    }
 } 

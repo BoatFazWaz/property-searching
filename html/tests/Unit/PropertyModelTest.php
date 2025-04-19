@@ -53,6 +53,9 @@ class PropertyModelTest extends TestCase
      */
     public function test_scope_available(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create sold property
         Property::create([
             'title' => 'Sold Property',
@@ -65,6 +68,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 65,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '123 Sukhumvit Road',
         ]);
 
         // Create available property
@@ -79,6 +88,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'House',
             'province' => 'Phuket',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 120,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '45 Beach Road',
         ]);
 
         $availableProperties = Property::available()->get();
@@ -92,6 +107,9 @@ class PropertyModelTest extends TestCase
      */
     public function test_scope_for_sale(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create property for sale
         Property::create([
             'title' => 'For Sale Property',
@@ -104,6 +122,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 70,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '56 Silom Road',
         ]);
 
         // Create property for rent
@@ -118,6 +142,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'House',
             'province' => 'Phuket',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 150,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '78 Patong Beach Road',
         ]);
 
         $forSaleProperties = Property::forSale()->get();
@@ -131,6 +161,9 @@ class PropertyModelTest extends TestCase
      */
     public function test_scope_for_rent(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create property for sale
         Property::create([
             'title' => 'For Sale Property',
@@ -143,6 +176,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 68,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '89 Rama IV Road',
         ]);
 
         // Create property for rent
@@ -157,6 +196,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'House',
             'province' => 'Phuket',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 140,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '101 Kata Beach Road',
         ]);
 
         $forRentProperties = Property::forRent()->get();
@@ -170,6 +215,9 @@ class PropertyModelTest extends TestCase
      */
     public function test_scope_by_province(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create property in Bangkok
         Property::create([
             'title' => 'Bangkok Property',
@@ -182,6 +230,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 1,
+            'bathrooms' => 1,
+            'area' => 45,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '42 Soi Thonglor',
         ]);
 
         // Create property in Phuket
@@ -196,6 +250,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Villa',
             'province' => 'Phuket',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 250,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '15 Kamala Beach Road',
         ]);
 
         $bangkokProperties = Property::byProvince('Bangkok')->get();
@@ -209,6 +269,9 @@ class PropertyModelTest extends TestCase
      */
     public function test_scope_search(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create properties with different titles
         Property::create([
             'title' => 'Luxury Condo in Bangkok',
@@ -221,6 +284,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 80,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '77 Wireless Road',
         ]);
 
         Property::create([
@@ -234,6 +303,12 @@ class PropertyModelTest extends TestCase
             'currency_symbol' => '฿',
             'property_type' => 'Villa',
             'province' => 'Phuket',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 200,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '33 Surin Beach Road',
         ]);
 
         // Test search by title
@@ -252,35 +327,59 @@ class PropertyModelTest extends TestCase
      */
     public function test_combining_scopes(): void
     {
+        // Clear existing data
+        Property::query()->delete();
+        
         // Create various properties
         Property::create([
             'title' => 'Luxury Condo in Bangkok for sale',
+            'description' => 'Beautiful luxury condo for sale',
             'for_sale' => true,
             'for_rent' => false,
             'sold' => false,
             'price' => 500000,
             'property_type' => 'Condo',
             'province' => 'Bangkok',
+            'bedrooms' => 2,
+            'bathrooms' => 1,
+            'area' => 75,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '22 Sathorn Road',
         ]);
 
         Property::create([
             'title' => 'Apartment in Bangkok for rent',
+            'description' => 'Comfortable apartment for rent',
             'for_sale' => false,
             'for_rent' => true,
             'sold' => false,
             'price' => 15000,
             'property_type' => 'Apartment',
             'province' => 'Bangkok',
+            'bedrooms' => 1,
+            'bathrooms' => 1,
+            'area' => 50,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '99 Asoke Road',
         ]);
 
         Property::create([
             'title' => 'Sold Villa in Phuket',
+            'description' => 'Luxurious villa in prime location',
             'for_sale' => true,
             'for_rent' => false,
             'sold' => true,
             'price' => 900000,
             'property_type' => 'Villa',
             'province' => 'Phuket',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 280,
+            'area_type' => 'sqm',
+            'country' => 'Thailand',
+            'street' => '55 Bangtao Beach Road',
         ]);
 
         // Test combining forSale, available, and byProvince scopes
