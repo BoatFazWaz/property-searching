@@ -79,9 +79,16 @@
 }
 
 .property-badge {
-  @apply text-xs uppercase tracking-wider font-medium px-3 py-1 rounded-full;
-  background: rgba(var(--color-primary-rgb), 0.9);
+  @apply text-xs uppercase tracking-wider font-medium px-3 py-1.5 rounded-full shadow-md;
+  background: rgba(var(--color-primary-rgb), 0.95);
+  color: white;
   backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+}
+
+.property-badge.bg-secondary {
+  background: rgba(var(--color-secondary-rgb), 0.95);
 }
 
 /* Gold accent for luxury feel */

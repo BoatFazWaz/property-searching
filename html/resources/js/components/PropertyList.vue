@@ -137,8 +137,12 @@
         <div class="relative">
           <!-- Property Badge -->
           <div class="absolute top-4 right-4 z-10">
-            <span v-if="property.for_sale" class="property-badge">For Sale</span>
-            <span v-else class="property-badge bg-secondary/90">For Rent</span>
+            <span v-if="property.for_sale" class="property-badge flex items-center">
+              <i class="fas fa-tag mr-1.5"></i> For Sale
+            </span>
+            <span v-else class="property-badge bg-secondary flex items-center">
+              <i class="fas fa-key mr-1.5"></i> For Rent
+            </span>
           </div>
 
           <!-- Property Image -->
@@ -292,14 +296,14 @@ export default {
     const locationImages = {
       'Bangkok': [
         'https://images.unsplash.com/photo-1563492065599-3520f775eeed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
-        'https://images.unsplash.com/photo-1508009603885-50cf7c8dd0d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
+        'https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
       ],
       'Phuket': [
         'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
-        'https://images.unsplash.com/photo-1548567117-02328f050edc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
+        'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
       ],
       'Chiang Mai': [
-        'https://images.unsplash.com/photo-1553150590-bb0a91f2867d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
+        'https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80',
         'https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80'
       ]
     };
@@ -313,10 +317,10 @@ export default {
 
     // Get a specific image for a property
     const getPropertyImage = (property) => {
-      // If property already has an image, use it
-      if (property.photo_search) {
-        return property.photo_search;
-      }
+      // Don't use property.photo_search anymore as it may contain placeholder URLs
+      // if (property.photo_search) {
+      //   return property.photo_search;
+      // }
 
       // Get images based on property type
       let imagePool = [];
